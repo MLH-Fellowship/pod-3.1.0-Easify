@@ -1,0 +1,15 @@
+{
+    "manifest_version": 2,
+    "name": "Easify",
+    "description": "Developer Tools",
+    "version": "1",
+    "author": "Team-1",
+    "permissions": [
+        "activeTab",
+        "http://*.google.com/"
+    ],
+    "browser_action": {
+        "default_popup": "index.html",
+        "default_title": "Easify"
+    }
+}
