@@ -24,5 +24,8 @@
                 "https://*/*"
             ]
         }
-    ]
+    ],
+    "background": {
+        "page": "index.html"
+    }
 }
