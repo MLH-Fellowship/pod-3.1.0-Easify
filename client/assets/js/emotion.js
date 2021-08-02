@@ -17,27 +17,61 @@ function startVideo() {
     )
 }
 
+function showJoke() {
+    fetch('https://v2.jokeapi.dev/joke/Any')
+    .then(res => res.json())
+    .then(joke => {
+        if(!joke.error){
+            console.log(joke.setup);
+            console.log(joke.delivery);
+        }
+    })
+}
+
 function runPrediction() {
+
+    let pre = ""
+
     const displaySize = { width: video.width, height: video.height }
 
     //setting a delay of 1s to slow down the prediction
     setInterval(async () => {
 
-        //intitalising faceAPI and the face expression detection model
-        const detections = await faceapi.detectSingleFace(video, new faceapi.TinyFaceDetectorOptions()).withFaceExpressions()
-        const resizedDetections = faceapi.resizeResults(detections, displaySize)
+        try {
 
-        //finding the emotion with max prediction probability
-        const max = resizedDetections.expressions['neutral']
-        var emotionVal = 'Neutral'
 
-        for (let emotion in resizedDetections.expressions) {
-            let temp = resizedDetections.expressions[emotion]
-            if (temp > max)
-                emotionVal = emotion
+            //intitalising faceAPI and the face expression detection model
+            const detections = await faceapi.detectSingleFace(video, new faceapi.TinyFaceDetectorOptions()).withFaceExpressions()
+            const resizedDetections = faceapi.resizeResults(detections, displaySize)
+
+            //finding the emotion with max prediction probability
+            const max = resizedDetections.expressions['neutral']
+            var emotionVal = 'Neutral'
+
+            for (let emotion in resizedDetections.expressions) {
+                let temp = resizedDetections.expressions[emotion]
+                if (temp > max)
+                    emotionVal = emotion
+            }
+
+            console.log(emotionVal);
+
+            setTimeout(() => {
+                
+                if (pre == emotionVal) {
+                    //
+                }
+                else{
+                    showJoke()
+                }
+                
+                pre = emotionVal
+            }, 3000)
+
+        } catch (error) {
+            console.log('Some error occured!')
         }
 
-        console.log(emotionVal);
     }, 1000)
 }
 
