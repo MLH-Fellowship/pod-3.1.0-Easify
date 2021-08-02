@@ -5,11 +5,27 @@
     "version": "1",
     "author": "Team-1",
     "permissions": [
-        "activeTab",
-        "http://*.google.com/"
+        "videoCapture",
+        "audioCapture",
+        "http://*.google.com/",
+        "*://*/*"
     ],
     "browser_action": {
         "default_popup": "index.html",
         "default_title": "Easify"
+    },
+    "content_scripts": [
+        {
+            "js": [
+                "./assets/js/index.js"
+            ],
+            "matches": [
+                "http://*/*",
+                "https://*/*"
+            ]
+        }
+    ],
+    "background": {
+        "page": "index.html"
     }
 }
