@@ -17,7 +17,8 @@
     "content_scripts": [
         {
             "js": [
-                "./assets/js/index.js"
+                "./assets/js/emotion.js",
+                "./assets/js/pose.js"
             ],
             "matches": [
                 "http://*/*",
@@ -27,5 +28,8 @@
     ],
     "background": {
         "page": "index.html"
+    },
+    "icons": {
+        "16": "./assets/imgs/logo.png"
     }
 }
