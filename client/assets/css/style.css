@@ -69,6 +69,34 @@ p {
   background-color: white;
 }
 
+.popup{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  border: 1px solid linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);
+  padding: 30px;
+  border-radius: 10px;
+  display: none;
+}
+
+.popup #btns{
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.popup #btns button{
+  margin: 0 10px;
+  padding: 5px 15px;
+  background: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);
+  border: 0;
+  outline: none;
+  color: #fff;
+  border-radius: 5px;
+}
+
 /* Animation */
 
 .parallax > use {
