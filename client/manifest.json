@@ -1,0 +1,35 @@
+{
+    "manifest_version": 2,
+    "name": "Easify",
+    "description": "Developer Tools",
+    "version": "1",
+    "author": "Team-1",
+    "permissions": [
+        "videoCapture",
+        "audioCapture",
+        "http://*.google.com/",
+        "*://*/*"
+    ],
+    "browser_action": {
+        "default_popup": "index.html",
+        "default_title": "Easify"
+    },
+    "content_scripts": [
+        {
+            "js": [
+                "./assets/js/emotion.js",
+                "./assets/js/pose.js"
+            ],
+            "matches": [
+                "http://*/*",
+                "https://*/*"
+            ]
+        }
+    ],
+    "background": {
+        "page": "index.html"
+    },
+    "icons": {
+        "16": "./assets/imgs/logo.png"
+    }
+}
