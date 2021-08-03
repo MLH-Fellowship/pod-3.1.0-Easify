@@ -17,14 +17,42 @@ function startVideo() {
     )
 }
 
-function showJoke() {
-    fetch('https://v2.jokeapi.dev/joke/Any')
-    .then(res => res.json())
-    .then(joke => {
-        if(!joke.error){
-            console.log(joke.setup);
-            console.log(joke.delivery);
-        }
+//fetching a joke using jokeAPI
+// function getJoke() {
+//     fetch('https://v2.jokeapi.dev/joke/Any')
+//     .then(res => res.json())
+//     .then(data => {
+//         if(!data.error)
+//             console.log(data);
+//     })
+
+// }
+
+function oepnPopup(){
+    const popup = document.querySelector('.popup')
+    popup.style.display = 'block'
+
+    const yesToJoke = document.querySelector('#yes')
+    const noToJoke = document.querySelector('#no')
+    const jokeBox = document.querySelector('#joke')
+
+    //BUG - getting called 3 times 
+    yesToJoke.addEventListener('click', () => {   
+        
+        //fetching joke from the API
+        fetch('https://v2.jokeapi.dev/joke/Any')
+            .then(res => res.json())
+            .then(data => {
+                if (!data.error && data.setup){
+                    jokeBox.innerHTML = data.setup
+                    jokeBox.innerHTML += data.delivery
+                }
+            })
+    })
+
+    noToJoke.addEventListener('click', () => {
+        popup.style.display = 'none'
+        jokeBox.innerHTML = ""
     })
 }
 
@@ -38,7 +66,6 @@ function runPrediction() {
     setInterval(async () => {
 
         try {
-
 
             //intitalising faceAPI and the face expression detection model
             const detections = await faceapi.detectSingleFace(video, new faceapi.TinyFaceDetectorOptions()).withFaceExpressions()
@@ -54,19 +81,19 @@ function runPrediction() {
                     emotionVal = emotion
             }
 
-            console.log(emotionVal);
+            //writing current mood on the frontend side
+            const moodText = document.querySelector('#mood-text')
+            moodText.innerHTML = `Your current mood is: ${emotionVal}`
 
+            //if user has a new mood - open popup
             setTimeout(() => {
                 
-                if (pre == emotionVal) {
-                    //
-                }
-                else{
-                    showJoke()
+                if (pre != emotionVal) {
+                    oepnPopup()
                 }
                 
                 pre = emotionVal
-            }, 3000)
+            }, 5000)
 
         } catch (error) {
             console.log('Some error occured!')
