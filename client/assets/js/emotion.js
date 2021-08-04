@@ -1,106 +1,59 @@
+function classifyEmotion() {
 
-const video = document.getElementById('video')
+    const emoText = document.querySelector('#emotion-text')
+    const atnText = document.querySelector('#attention-text')
 
-//loading all the required models 
-Promise.all([
-    faceapi.nets.tinyFaceDetector.loadFromUri('./assets/emotion-models'),
-    faceapi.nets.faceRecognitionNet.loadFromUri('./assets/emotion-models'),
-    faceapi.nets.faceExpressionNet.loadFromUri('./assets/emotion-models')
-]).then(startVideo)
+    let emotionVal = 'Neutral'
+    let attentionVal = 0
 
-//starting video after models have been loaded
-function startVideo() {
-    navigator.getUserMedia(
-        { video: {} },
-        stream => video.srcObject = stream,
-        err => console.error(err)
-    )
-}
+    var arr = []
 
-//fetching a joke using jokeAPI
-// function getJoke() {
-//     fetch('https://v2.jokeapi.dev/joke/Any')
-//     .then(res => res.json())
-//     .then(data => {
-//         if(!data.error)
-//             console.log(data);
-//     })
+    //loading the initial assets
+    const initSDK = new Promise((res) => {
+        res(CY.loader()
+            .licenseKey("b71ba1d527c3f71b2b23f4dbc8a0297fad2ca1e8f6c6")
+            .addModule(CY.modules().FACE_EMOTION.name)
+            .addModule(CY.modules().FACE_ATTENTION.name)
+            .load());
+    });
 
-// }
+    //initializing the camera and classification
+    initSDK.then(({ start }) => start())
 
-function oepnPopup(){
-    const popup = document.querySelector('.popup')
-    popup.style.display = 'block'
+    window.addEventListener(CY.modules().FACE_EMOTION.eventName, (evt) => {
+        if (evt.detail.output.dominantEmotion !== undefined) {
+            emotionVal = evt.detail.output.dominantEmotion
+            emoText.innerHTML = `Your emotion: ${emotionVal}`
+        }
+    })
 
-    const yesToJoke = document.querySelector('#yes')
-    const noToJoke = document.querySelector('#no')
-    const jokeBox = document.querySelector('#joke')
-
-    //BUG - getting called 3 times 
-    yesToJoke.addEventListener('click', () => {   
+    window.addEventListener(CY.modules().FACE_ATTENTION.eventName, (evt) => {
+        attentionVal = ((evt.detail.output.attention) * 100).toFixed(2)
         
-        //fetching joke from the API
-        fetch('https://v2.jokeapi.dev/joke/Any')
-            .then(res => res.json())
-            .then(data => {
-                if (!data.error && data.setup){
-                    jokeBox.innerHTML = data.setup
-                    jokeBox.innerHTML += data.delivery
-                }
-            })
-    })
+        if(arr.length < 25)
+            arr.push(attentionVal)
 
-    noToJoke.addEventListener('click', () => {
-        popup.style.display = 'none'
-        jokeBox.innerHTML = ""
-    })
-}
+        else if(arr.length == 25){
+            
+            let sum = 0
+            for (let i = 0; i < arr.length; i++) 
+                sum += parseFloat(arr[i])   
 
-function runPrediction() {
-
-    let pre = ""
-
-    const displaySize = { width: video.width, height: video.height }
-
-    //setting a delay of 1s to slow down the prediction
-    setInterval(async () => {
-
-        try {
-
-            //intitalising faceAPI and the face expression detection model
-            const detections = await faceapi.detectSingleFace(video, new faceapi.TinyFaceDetectorOptions()).withFaceExpressions()
-            const resizedDetections = faceapi.resizeResults(detections, displaySize)
-
-            //finding the emotion with max prediction probability
-            const max = resizedDetections.expressions['neutral']
-            var emotionVal = 'Neutral'
-
-            for (let emotion in resizedDetections.expressions) {
-                let temp = resizedDetections.expressions[emotion]
-                if (temp > max)
-                    emotionVal = emotion
-            }
-
-            //writing current mood on the frontend side
-            const moodText = document.querySelector('#mood-text')
-            moodText.innerHTML = `Your current mood is: ${emotionVal}`
-
-            //if user has a new mood - open popup
-            setTimeout(() => {
-                
-                if (pre != emotionVal) {
-                    oepnPopup()
-                }
-                
-                pre = emotionVal
-            }, 5000)
-
-        } catch (error) {
-            console.log('Some error occured!')
+            console.log(arr, sum/arr.length)
+            
+            arr.length = 0           
         }
 
-    }, 1000)
+
+        if(attentionVal < 40){
+            atnText.innerHTML = `Your attention: ${attentionVal}`
+        }
+        else{
+            atnText.innerHTML = ''
+        }
+    });
+
 }
 
-video.addEventListener('play', runPrediction)
+classifyEmotion()
 
