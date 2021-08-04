@@ -10,6 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="mphtools-feature" content="compatibilityUI, cameraPrivacyPopup, compatibilityAutoCheck">
 
     <!--Styles-->
     <link rel="stylesheet" href="./assets/css/style.css">
@@ -19,7 +20,8 @@
     <!--ML Scirpts-->
     <script src="./assets/js/ml-js/tf.min.js"></script>
     <script src="./assets//js/ml-js/tf-pose.min.js"></script>
-    <script src="./assets/js/ml-js/face-api.min.js"></script>
+    <script src="https://sdk.morphcast.com/mphtools/v1.0/mphtools.js"></script>
+    <script src="https://ai-sdk.morphcast.com/v1.14/ai-sdk.js"></script>
 
     <!--Bootstrap Scripts-->
     <script defer src="./assets/js/jquery.js"></script>
@@ -92,12 +94,13 @@ c-22.4,3-38.4,9.2-47.8,18.3c-11.2,10.9-13.6,26.7-16.3,45c-3.1,20.8-6.6,44.4-25.3
     <!--Header ends-->
 
     <!--Content starts-->
-    <div class="content flex">
-        <p id="mood-text"></p>
+    <div class="content">
+        <div id="emotion-text"></div>
+        <div id="attention-text"></div>
     </div>
 
     <div class="popup">
-        <h5>We noticed that your mood changed. Do you want to see a joke?</h5>
+        <h5>Kaam pr jao </h5>
         <div id="btns">
             <button id="yes">Yes</button>
             <button id="no">No</button>
@@ -107,11 +110,6 @@ c-22.4,3-38.4,9.2-47.8,18.3c-11.2,10.9-13.6,26.7-16.3,45c-3.1,20.8-6.6,44.4-25.3
     <!--Content ends-->
 
     <div id='label-container'></div>
-
-    <img src="" alt="" id="meme">
-
-    <video id="video" width="1" height="1" autoplay muted></video>
-
 
 </body>
 
