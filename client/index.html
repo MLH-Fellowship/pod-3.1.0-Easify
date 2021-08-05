@@ -27,10 +27,6 @@
     <script defer src="./assets/js/jquery.js"></script>
     <script defer src="./assets/js/bootstrap.js"></script>
 
-    <!--Local Scripts-->
-    <script defer src="./assets/js/pose.js"></script>
-    <script defer src="./assets/js/emotion.js"></script>
-
 </head>
 
 <body>
@@ -95,22 +91,29 @@ c-22.4,3-38.4,9.2-47.8,18.3c-11.2,10.9-13.6,26.7-16.3,45c-3.1,20.8-6.6,44.4-25.3
 
     <!--Content starts-->
     <div class="content">
-        <div id="emotion-text"></div>
-        <div id="attention-text"></div>
+        <div> Your dominant emotion: <span id="emotion-text">Fetching...</span></div>
+        <div>Your average attention (in percentage) in last 5 seconds: <span id="attention-text">Waiting...</span></div>
     </div>
 
     <div class="popup">
-        <h5>Kaam pr jao </h5>
+        <h5 class="popup-head"> </h5>
+
+        <p id="joke"></p>
+        
         <div id="btns">
             <button id="yes">Yes</button>
             <button id="no">No</button>
         </div>
-        <p id="joke"></p>
+    
     </div>
     <!--Content ends-->
 
     <div id='label-container'></div>
 
+    <!--Local Scripts-->
+    <script src="./assets/js/function.js"></script>
+    <script src="./assets/js/pose.js"></script>
+    <script src="./assets/js/emotion.js"></script>
 </body>
 
 </html>
