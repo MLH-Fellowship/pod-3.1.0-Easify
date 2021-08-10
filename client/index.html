@@ -89,26 +89,69 @@ c-22.4,3-38.4,9.2-47.8,18.3c-11.2,10.9-13.6,26.7-16.3,45c-3.1,20.8-6.6,44.4-25.3
     </div>
     <!--Header ends-->
 
-    <!--Content starts-->
-    <div class="content">
-        <div> Your dominant emotion: <span id="emotion-text">Fetching...</span></div>
-        <div>Your average attention (in percentage) in last 5 seconds: <span id="attention-text">Waiting...</span></div>
+    <p class="h3 text-center my-5">Productivity easified!</p>
+
+    <div class="row card-container">
+        <div class="card text-center">
+            <img src="./assets/imgs/emotion.png" class="card-img-top" alt="Emotion Illustration">
+            <div class="card-body">
+                <h5 class="card-title">Your Emotion</h5>
+                <p class="card-text" id="emotion-text">
+                    Fetching your emotions...
+                </p>
+            </div>
+        </div>
+
+        <div class="card text-center">
+            <img src="./assets/imgs/attention.png" class="card-img-top" alt="Attention Illustration">
+            <div class="card-body">
+                <h5 class="card-title">Your Attention</h5>
+                <p class="card-text" id="attention-text">
+                    Calculating your attention...
+                </p>
+            </div>
+        </div>
+
+        <div class="card text-center">
+            <img src="./assets/imgs/pose.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Your Pose</h5>
+                <p class="card-text" id="label-container">
+                    Observing your pose...
+                </p>
+            </div>
+        </div>
     </div>
 
     <div class="popup">
         <h5 class="popup-head"> </h5>
 
         <p id="joke"></p>
-        
+
         <div id="btns">
             <button id="yes">Yes</button>
             <button id="no">No</button>
         </div>
-    
+
     </div>
+
+    <div class="container-fluid pb-0 mb-0 justify-content-center text-light ">
+        <footer>
+            <div class="row my-5 justify-content-center py-5">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-xl-8 col-md-4 col-sm-4 col-12 my-auto mx-auto">
+                            <h3 class="mb-md-0 mb-5 bold-text text-center">Easify.</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    
     <!--Content ends-->
 
-    <div id='label-container'></div>
 
     <!--Local Scripts-->
     <script src="./assets/js/function.js"></script>
