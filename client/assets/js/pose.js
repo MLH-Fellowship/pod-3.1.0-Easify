@@ -5,10 +5,8 @@ async function predict() {
     const { pose, posenetOutput } = await model.estimatePose(webcam.canvas);
     const prediction = await model.predict(posenetOutput);
 
-    for (let i = 0; i < modelClasses; i++) {
-        const classPrediction = prediction[i].className + ': ' + prediction[i].probability.toFixed(2);
-        labelContainer.childNodes[i].innerHTML = classPrediction;
-    }
+    labelContainer.innerHTML = `Wrong Pose: <strong>${(prediction[0].probability * 100).toFixed(2)}%</strong>`
+    labelContainer.innerHTML += `<br>Correct Pose: <strong>${(prediction[1].probability * 100).toFixed(2)}%</strong>`
 }
 
 async function loop(timestamp) {
@@ -38,11 +36,7 @@ async function init() {
     //passing the function loop 
     window.requestAnimationFrame(loop);
 
-    // temporarily adding classes and results on the webpage
     labelContainer = document.getElementById('label-container');
-    for (let i = 0; i < modelClasses; i++) { // and class labels
-        labelContainer.appendChild(document.createElement('div'));
-    }
 }
 
 init()

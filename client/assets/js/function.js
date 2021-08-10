@@ -38,16 +38,18 @@ function calcDominantEmotion(arr) {
     }
 
     //printing on the frontend
-    emoText.innerHTML = `${dominantEmo}`
+    emoText.innerHTML = `Your dominant emotion in last 5s was - <strong>${dominantEmo}</strong>`
 
     //clearing the array for the next prediction
     arr.length = 0
 
     //TODO - CREATE AN ARRAY WITH EMOTIONS AND CHECKING IF THESE ARE CONTAINED
     if (dominantEmo == 'Neutral' || dominantEmo == 'Happy') {
-        openPopup(dominantEmo)
+        // openPopup(dominantEmo)
     }
 }
+
+let timeArr = []
 
 //function to calculate the average attention
 function calcAvgAttention(arr){
@@ -60,7 +62,17 @@ function calcAvgAttention(arr){
     avgAtn = (sum / arr.length).toFixed(2)
 
     //printing on the frontend
-    atnText.innerHTML = `${avgAtn}`
+    atnText.innerHTML = `Your average attention in last 5s was - <strong>${avgAtn}%</strong>`
+
+    let date = new Date()
+    let time = date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds()
+    let temp = {
+        x: time,
+        y: avgAtn
+    }
+    timeArr.push(temp)
+
+    console.log(timeArr);
 
     //clearing the array for the next prediction
     arr.length = 0

@@ -8,8 +8,10 @@ video{
 }
 @import url(//fonts.googleapis.com/css?family=Lato:300:400);
 
-body {
+body, html {
   margin:0;
+  padding: 0;
+  overflow-x: hidden;
 }
 
 h1 {
@@ -97,6 +99,16 @@ p {
   border-radius: 5px;
 }
 
+.card-container{
+  margin: 50px 0px!important;
+  justify-content: center;
+}
+
+.card{
+  flex: 0 0 25%;
+  margin: 10px 40px;
+  border: 0;
+}
 /* Animation */
 
 .parallax > use {
@@ -138,4 +150,39 @@ p {
   h1 {
     font-size:24px;
   }
+}
+
+@media(max-width: 1000px){
+  .card{
+    flex: 0 0 26%;
+    margin: 50px 20px;
+  }
+}
+
+.container-fluid {
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(0,172,193,1) 0%, rgba(84,58,183,1) 100%);
+  color: #fff !important;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.bold-text {
+  color: #fff !important;
+}
+
+.mt-55 {
+  margin-top: calc(50px + (60 - 50) * ((100vw - 360px) / (1600 - 360))) !important
+}
+
+h3 {
+  font-size: calc(34px + (40 - 34) * ((100vw - 360px) / (1600 - 360))) !important
+}
+
+.social {
+  font-size: 21px !important
+}
+
+.rights {
+  font-size: calc(10px + (12 - 10) * ((100vw - 360px) / (1600 - 360))) !important
 }
