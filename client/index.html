@@ -15,17 +15,12 @@
     <!--Styles-->
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./assets/css/bs5.min.css">
 
     <!--ML Scirpts-->
     <script src="./assets/js/ml-js/tf.min.js"></script>
     <script src="./assets//js/ml-js/tf-pose.min.js"></script>
     <script src="https://sdk.morphcast.com/mphtools/v1.0/mphtools.js"></script>
     <script src="https://ai-sdk.morphcast.com/v1.14/ai-sdk.js"></script>
-
-    <!--Bootstrap Scripts-->
-    <script defer src="./assets/js/jquery.js"></script>
-    <script defer src="./assets/js/bootstrap.js"></script>
 
     <script src="https://www.youtube.com/iframe_api"></script>
 
@@ -111,6 +106,26 @@ c-22.4,3-38.4,9.2-47.8,18.3c-11.2,10.9-13.6,26.7-16.3,45c-3.1,20.8-6.6,44.4-25.3
                 <p class="card-text" id="attention-text">
                     Calculating your attention...
                 </p>
+
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#graphModal" id="atn-graph-open">
+                    Explore More
+                </button>
+                
+                <!-- Modal -->
+                <div class="modal fade" id="graphModal" tabindex="-1" aria-labelledby="graphModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-xl modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="graphModalLabel">Attention Graph</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="atn-graph-close"></button>
+                            </div>
+                            <div class="modal-body" id="atn-graph-body">
+                                <canvas id="attentionChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -130,17 +145,7 @@ c-22.4,3-38.4,9.2-47.8,18.3c-11.2,10.9-13.6,26.7-16.3,45c-3.1,20.8-6.6,44.4-25.3
         data-loop="1"
         id="youtube-audio">
     </div>
-    <div class="popup">
-        <h5 class="popup-head"> </h5>
-
-        <p id="joke"></p>
-
-        <div id="btns">
-            <button id="yes">Yes</button>
-            <button id="no">No</button>
-        </div>
-
-    </div>
+        
 
     <div class="container-fluid pb-0 mb-0 justify-content-center text-light ">
         <footer>
@@ -159,6 +164,11 @@ c-22.4,3-38.4,9.2-47.8,18.3c-11.2,10.9-13.6,26.7-16.3,45c-3.1,20.8-6.6,44.4-25.3
     
     <!--Content ends-->
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.0/dist/chart.min.js"></script>
+    <!--Bootstrap Scripts-->
+    <script defer src="./assets/js/jquery.js"></script>
+    <script src="./assets/js/popper.js"></script>
+    <script defer src="./assets/js/bootstrap.js"></script>
 
     <!--Local Scripts-->
     <script src="./assets/js/function.js"></script>
