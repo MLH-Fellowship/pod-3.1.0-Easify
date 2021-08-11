@@ -24,7 +24,6 @@ function classifyEmotion() {
                 emotionArr.push(evt.detail.output.dominantEmotion)
 
             else if(emotionArr.length == 50){
-                console.log(emotionArr);
                 calcDominantEmotion(emotionArr)
             }
     })

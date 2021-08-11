@@ -39,5 +39,6 @@
     "icons": {
         "16": "./assets/imgs/logo.png"
     },
-    "content_security_policy": "script-src 'self' https://sdk.morphcast.com/ https://ai-sdk.morphcast.com https://www.youtube.com https://www.youtube.com/iframe_api; object-src 'self'"
+    "content_security_policy": "script-src 'self' https://sdk.morphcast.com/ https://ai-sdk.morphcast.com https://cdn.jsdelivr.net/ https://www.youtube.com https://www.youtube.com/iframe_api; object-src 'self'"
+
 }
