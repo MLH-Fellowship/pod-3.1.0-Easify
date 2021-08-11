@@ -45,7 +45,7 @@ function calcDominantEmotion(arr) {
 
     //TODO - CREATE AN ARRAY WITH EMOTIONS AND CHECKING IF THESE ARE CONTAINED
     if (dominantEmo == 'Neutral' || dominantEmo == 'Happy') {
-        openPopup(dominantEmo)
+        // openPopup(dominantEmo)
     }
 }
 
