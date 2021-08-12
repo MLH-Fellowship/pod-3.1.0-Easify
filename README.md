@@ -21,6 +21,27 @@ Easify is a smart chrome extension. This extension will help you smartly and dra
 - Pytorch
 - OpenCV
 
+## Run the application
+
+1. Clone this repository by typing the following command in your terminal
+```
+git clone https://github.com/MLH-Fellowship/pod-3.1.0-Easify
+```
+2. Open Google Chrome and type in the address bar - 
+```
+chrome://extensions
+```
+3. From the right-hand side, enable the developer mode if you haven't already
+4. From the left-hand side, select the option that says 'Load Unpacked'. 
+5. Locate the client folder and select it.
+6. An extension with an ID will appear, there can be some errors right now but don't worry we will resolve it in the later steps. 
+7. Copy that ID and in a new tab write the following address:
+```
+chrome-extension://<extension_ID>/index.html
+```
+8. You will now be promted to give your camera permissions. Don't worry this is just to see your emotions and the classification is performed in your browser only. 
+9. After you give the permission, you will be able to see the extension working!
+
 ## Target audience
 - All developers
 - Users with a high screentime
