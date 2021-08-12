@@ -1,4 +1,8 @@
-const url = "https://localhost:5000/"
+// const url = "https://localhost:5000"
+const url = "https://c52d3cd00da6.ngrok.io"
+const getSong = document.querySelector('#get-song')
+
+var player;
 
 function onYouTubeIframeAPIReady(){
     var e =document.getElementById("youtube-audio");
@@ -9,14 +13,14 @@ function onYouTubeIframeAPIReady(){
     var a =document.createElement("div");
     a.setAttribute("id","youtube-player");
     e.appendChild(a);
-    var o =function(play){
-        var img =play?"IDzX9gL.png":"quyUPXN.png";
-        t.setAttribute("src","https://i.imgur.com/"+img)};
-    e.onclick=function(){
-        (player.getPlayerState()===YT.PlayerState.PLAYING
-            ||player.getPlayerState()===YT.PlayerState.BUFFERING)?(
-                player.pauseVideo(),o(!1)):(player.playVideo(),o(!0))
-    };
+    // var o =function(play){
+    //     var img =play?"IDzX9gL.png":"quyUPXN.png";
+    //     t.setAttribute("src","https://i.imgur.com/"+img)};
+    // e.onclick=function(){
+    //     (player.getPlayerState()===YT.PlayerState.PLAYING
+    //         ||player.getPlayerState()===YT.PlayerState.BUFFERING)?(
+    //             player.pauseVideo(),o(!1)):(player.playVideo(),o(!0))
+    // };
     var track_id = 'RBumgq5yVrA'
     // var refr =document.getElementById("refresh");
     // reft =document.createElement("img");
@@ -30,7 +34,7 @@ function onYouTubeIframeAPIReady(){
     // refr.onclick=function(){
     
     var playlist_id = 'PLulmmfwRHGeLQuS3o01Hty7T9eB4kMt69';
-    var player =new YT.Player("youtube-player",{
+    player =new YT.Player("youtube-player",{
         height:"360",
         width:"480",
         host: 'http://www.youtube-nocookie.com',
@@ -52,22 +56,24 @@ function onYouTubeIframeAPIReady(){
         }
     });
 }
-function getsong(){
+getSong.addEventListener('click', (e) => {
     console.log("hi")
     fetch(url+"/song/sad",{
         method: 'GET',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*'
           },
     })
     .then((response) => (response.json()))
 
     .then((res) => {
         console.log("response");
-        if(res.success){
+        if(res){
             console.log(res);
             // document.getElementById("youtube-player").src = res;
+            player.loadVideoById(res)
         }
         else{
             alert("Couldn't fetch song url. Please try again.");
@@ -77,4 +83,4 @@ function getsong(){
     .catch(err => {
         console.log(err);
     });
-};
+});
