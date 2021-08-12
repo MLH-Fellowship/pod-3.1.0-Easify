@@ -28,29 +28,7 @@ function onYouTubeIframeAPIReady(){
     // refr.appendChild(refa);
     // reft.setAttribute("src","../imgs/refresh.png");
     // refr.onclick=function(){
-    //     fetch(url+"/song/sad",{
-    //         method: 'GET',
-    //         headers: {
-    //             'Accept': 'application/json',
-    //             'Content-Type': 'application/json',
-    //           },
-    //     })
-    //     .then((response) => (response.json()))
     
-    //     .then((res) => {
-    //         console.log("response");
-    //         if(res.success){
-    //             console.log(res);
-    //         }
-    //         else{
-    //             alert("Couldn't fetch song url. Please try again.");
-    //         }
-        
-    //     })
-    //     .catch(err => {
-    //         console.log(err);
-    //     });
-    // };
     var playlist_id = 'PLulmmfwRHGeLQuS3o01Hty7T9eB4kMt69';
     var player =new YT.Player("youtube-player",{
         height:"360",
@@ -74,3 +52,29 @@ function onYouTubeIframeAPIReady(){
         }
     });
 }
+function getsong(){
+    console.log("hi")
+    fetch(url+"/song/sad",{
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+    })
+    .then((response) => (response.json()))
+
+    .then((res) => {
+        console.log("response");
+        if(res.success){
+            console.log(res);
+            // document.getElementById("youtube-player").src = res;
+        }
+        else{
+            alert("Couldn't fetch song url. Please try again.");
+        }
+    
+    })
+    .catch(err => {
+        console.log(err);
+    });
+};
