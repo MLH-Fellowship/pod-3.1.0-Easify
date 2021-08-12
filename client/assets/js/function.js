@@ -3,6 +3,30 @@ const graphClose = document.querySelector('#atn-graph-close')
 const graphBody = document.querySelector('#atn-graph-body')
 let timeArr = [], atnChart, newChart
 
+//function to show desktop notifications
+function showNotification(title, message, clickAction, options){
+    
+    var img = './assets/imgs/logo.png'
+    var text = `${message}`
+    var notification = new Notification(`${title}`, { body: text, icon: img });
+    
+    //if clickAction is passed from the function allow clicks
+    if (clickAction) {
+        notification.onclick = function (event) {
+            event.preventDefault(); // prevent the browser from focusing the Notification's tab
+
+            //fetch emotions and
+            //play music here  
+
+            //if playMusic is recieved 
+            if (clickAction == 'playMusic') {
+                alert(`Playing ${options.emotion} music`)
+            }
+             
+        }
+    }
+}
+
 //function to calculate the most dominant emotion
 function calcDominantEmotion(arr) {
     const emoText = document.querySelector('#emotion-text')
@@ -36,7 +60,14 @@ function calcDominantEmotion(arr) {
 
     //TODO - CREATE AN ARRAY WITH EMOTIONS AND CHECKING IF THESE ARE CONTAINED
     if (dominantEmo == 'Neutral' || dominantEmo == 'Happy') {
-        // openPopup(dominantEmo)
+        var title = `Emotional check`
+        var msgString = `We noticed that you were ${dominantEmo} for sometime, do you want to play some music? Click me to play some music`
+        var clickAction = 'playMusic'
+        var options = {
+            emotion: dominantEmo
+        }
+
+        // showNotification(title, msgString, clickAction, options)
     }
 }
 
@@ -61,8 +92,6 @@ function calcAvgAttention(arr){
         y: avgAtn
     }
     timeArr.push(temp)
-
-    console.log(timeArr);
 
     //clearing the array for the next prediction
     arr.length = 0
@@ -123,3 +152,10 @@ graphClose.addEventListener('click', (e) => {
     if (newChart)
         newChart.destroy()
 })
+
+//refreshment break reminder
+window.setInterval(() => {
+    let title = `Refreshment Break!`
+    let msgString = "You have been active since long, maybe take a break?"
+    showNotification(title, msgString, false)
+}, 60000)
