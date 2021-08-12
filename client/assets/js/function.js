@@ -20,7 +20,9 @@ function showNotification(title, message, clickAction, options){
 
             //if playMusic is recieved 
             if (clickAction == 'playMusic') {
-                alert(`Playing ${options.emotion} music`)
+                if(options.emotion == 'happy'){
+                    //play happy music 
+                }
             }
              
         }
