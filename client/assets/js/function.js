@@ -3,16 +3,22 @@ const graphClose = document.querySelector('#atn-graph-close')
 const graphBody = document.querySelector('#atn-graph-body')
 let timeArr = [], atnChart, newChart
 
+//function to show desktop notifications
 function showNotification(title, message, clickAction, options){
+    
     var img = './assets/imgs/logo.png'
     var text = `${message}`
     var notification = new Notification(`${title}`, { body: text, icon: img });
+    
+    //if clickAction is passed from the function allow clicks
     if (clickAction) {
         notification.onclick = function (event) {
             event.preventDefault(); // prevent the browser from focusing the Notification's tab
 
-            //play music here
+            //fetch emotions and
+            //play music here  
 
+            //if playMusic is recieved 
             if (clickAction == 'playMusic') {
                 alert(`Playing ${options.emotion} music`)
             }
