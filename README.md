@@ -33,7 +33,6 @@ Easify is a smart chrome extension. This extension will help you smartly and dra
 - Pytorch
 - OpenCV
 
-
 ## Run the application
 
 1. Clone this repository by typing the following command in your terminal
@@ -61,7 +60,7 @@ chrome-extension://<extension_ID>/index.html
 
 ## Team
 
-> "Alone we can do so little; together we can do so much."
+The following is our team for the hackathon submission - 
 
 | S.No. | Name               | GitHub :octocat:                             |
 | ----- | ------------------ | ---------------------------------------------------- |
