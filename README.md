@@ -22,6 +22,7 @@ Easify is a smart chrome extension. This extension will help you smartly and dra
 - Suggesting Trending articles/repositories to users to cherish their knowledge
 - On basis of screentime, reminding the user to take refreshment breaks
 
+
 ## Tech stack
 - NodeJS
 - EJS
@@ -33,6 +34,7 @@ Easify is a smart chrome extension. This extension will help you smartly and dra
 - Python
 - Pytorch
 - OpenCV
+- CockroachDB
 
 ## Run the application
 
