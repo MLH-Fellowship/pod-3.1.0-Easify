@@ -27,6 +27,7 @@ function showNotification(title, message, clickAction, options){
     }
 }
 
+
 //function to calculate the most dominant emotion
 function calcDominantEmotion(arr) {
     const emoText = document.querySelector('#emotion-text')
