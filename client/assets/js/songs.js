@@ -32,6 +32,8 @@ function onYouTubeIframeAPIReady(){
         }
     });
 }
+
+//fetching happy song
 getHappySong.addEventListener('click', (e) => {
     fetch(url+"/songs",{
         method: 'POST',
@@ -61,31 +63,36 @@ getHappySong.addEventListener('click', (e) => {
     });
 });
 
-getSadSong.addEventListener('click', (e) => {
-    fetch(url+"/songs",{
+//fetching sad songs
+function fetchSadSong(){
+    fetch(url + "/songs", {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': '*'
-          },
+        },
         body: JSON.stringify({
             emotion: 'sad',
         })
     })
-    .then((response) => (response.json()))
+        .then((response) => (response.json()))
 
-    .then((res) => {
-        console.log("response sad");
-        if(res){
-            player.loadVideoById(res.url)
-        }
-        else{
-            alert("Couldn't fetch song url. Please try again.");
-        }
-    
-    })
-    .catch(err => {
-        console.log(err);
-    });
-});
+        .then((res) => {
+            console.log("response sad");
+            if (res) {
+                player.loadVideoById(res.url)
+            }
+            else {
+                alert("Couldn't fetch song url. Please try again.");
+            }
+
+        })
+        .catch(err => {
+            console.log(err);
+        });
+}
+
+getSadSong.addEventListener('click', () => {
+    fetchSadSong()
+})

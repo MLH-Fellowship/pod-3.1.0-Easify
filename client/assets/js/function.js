@@ -21,8 +21,8 @@ function showNotification(title, message, clickAction, options){
 
             //if playMusic is recieved 
             if (clickAction == 'playMusic') {
-                if(options.emotion == 'happy'){
-                    //play happy music 
+                if(options.emotion == 'neutral'){
+                    fetchSadSong()
                 }
             }
              
@@ -66,7 +66,7 @@ function calcDominantEmotion(arr) {
     //clearing the array for the next prediction
     arr.length = 0
 
-    //TODO - CREATE AN ARRAY WITH EMOTIONS AND CHECKING IF THESE ARE CONTAINED
+    //show notifications according to the emotions
     if (dominantEmo == 'Neutral' || dominantEmo == 'Happy') {
         var title = `Emotional check`
         var msgString = `We noticed that you were ${dominantEmo} for sometime, do you want to play some music? Click me to play some music`
@@ -75,7 +75,7 @@ function calcDominantEmotion(arr) {
             emotion: dominantEmo
         }
 
-        showNotification(title, msgString, clickAction, options)
+        // showNotification(title, msgString, clickAction, options)
     }
 }
 
