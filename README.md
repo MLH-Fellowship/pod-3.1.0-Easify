@@ -53,7 +53,7 @@ Easify can detect users' moods/emotions from their camera but this is not it! We
 ### Attention tracker 
 Studies have shown that a person is less likely to be distracted if he/she keeps a track of his attention but keeping this track can be exhausting but no worries! Easify has this covered for you. At times developers lose focus while working. To make them more productive, easify shows developers how much they were attentive in the last 5seconds. **This attention tracker not only keeps a track of the head movement but also the movement of eyeballs which makes it super efficient in tracking the focus of the user.**
 
-### Attention trcaker graph
+### Attention tracker graph
 With attention tracker, we have one more feature that allows users to see the history of their attention and the number of times they were distracted by the means of a beautiful and easy-to-understand graph. 
 
 ### Refreshment break reminder
@@ -71,9 +71,9 @@ All the classification and machine learning models are run in the users' browser
 ## Application images
 
 <div align="center">
-  <img width="480" alt="easify" src="https://github.com/MLH-Fellowship/pod-3.1.0-Easify/blob/staging/client/assets/imgs/home-pg.png?raw=true">
-  <img width="480" alt="easify" src="https://github.com/MLH-Fellowship/pod-3.1.0-Easify/blob/staging/client/assets/imgs/atn-graph.png?raw=true">
-  <img width="480" alt="easify" src="https://github.com/MLH-Fellowship/pod-3.1.0-Easify/blob/staging/client/assets/imgs/website-blk.png?raw=true">
+  <img width="240" alt="easify" src="https://github.com/MLH-Fellowship/pod-3.1.0-Easify/blob/staging/client/assets/imgs/home-pg.png?raw=true">
+  <img width="240" alt="easify" src="https://github.com/MLH-Fellowship/pod-3.1.0-Easify/blob/staging/client/assets/imgs/atn-graph.png?raw=true">
+  <img width="240" alt="easify" src="https://github.com/MLH-Fellowship/pod-3.1.0-Easify/blob/staging/client/assets/imgs/website-blk.png?raw=true">
 </div>
 
 ## Run the application
