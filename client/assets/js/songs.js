@@ -48,7 +48,7 @@ function onYouTubeIframeAPIReady(){
         events:{
             'onReady':function(e){
                 player.setPlaybackQuality("small");
-                o(player.getPlayerState()!==YT.PlayerState.CUED)
+                // o(player.getPlayerState()!==YT.PlayerState.CUED)
             },
             'onStateChange':function(e){
                 if(e.data===YT.PlayerState.ENDED){

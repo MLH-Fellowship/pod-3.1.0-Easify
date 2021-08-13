@@ -122,22 +122,15 @@ c-22.4,3-38.4,9.2-47.8,18.3c-11.2,10.9-13.6,26.7-16.3,45c-3.1,20.8-6.6,44.4-25.3
         </div>
     </div>
 
-    <div data-video="VIDEO_ID"
-        data-autoplay="0"
-        data-loop="1"
-        id="youtube-audio">
+    <div class="mx-auto">
+        <div class="d-flex justify-content-center">
+            <div data-video="VIDEO_ID" data-autoplay="0" data-loop="1" id="youtube-audio"></div>
+        </div>
+        <div class="mx-auto w-100 d-flex justify-content-center">
+            <button id="get-happy-song" class="btn btn-primary d-block mx-2 my-4">Play a happy song</button>
+            <button id="get-sad-song" class="btn btn-primary d-block mx-2 my-4">Play a sad song</button>
+        </div>
     </div>
-
-    <div id="refresh">
-        <button id="get-happy-song" class="btn-primary">Play a happy song</button>
-    </div>
-
-    <div id="refresh">
-        <button id="get-sad-song" class="btn-primary">Play a sad song</button>
-    </div>
-    <!-- <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/M7lc1UVf-VE" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe><br> -->
-    <!-- <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/playlist?list=PLulmmfwRHGeLQuS3o01Hty7T9eB4kMt69" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
-        
 
     <div class="container-fluid pb-0 mb-0 justify-content-center text-light ">
         <footer>
@@ -167,7 +160,7 @@ c-22.4,3-38.4,9.2-47.8,18.3c-11.2,10.9-13.6,26.7-16.3,45c-3.1,20.8-6.6,44.4-25.3
     <script src="./assets/js/pose.js"></script>
     <script src="./assets/js/emotion.js"></script>
     <script src="./assets/js/songs.js"></script>
-
+    
 </body>
 
 </html>

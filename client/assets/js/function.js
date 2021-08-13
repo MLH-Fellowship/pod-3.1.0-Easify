@@ -1,5 +1,6 @@
-const graphOpen = document.querySelector('#atn-graph-open')
-const graphClose = document.querySelector('#atn-graph-close')
+console.clear()
+const atnGraphOpen = document.querySelector('#atn-graph-open')
+const atnGraphClose = document.querySelector('#atn-graph-close')
 const graphBody = document.querySelector('#atn-graph-body')
 let timeArr = [], atnChart, newChart
 
@@ -29,6 +30,12 @@ function showNotification(title, message, clickAction, options){
     }
 }
 
+//function to return time in seconds
+function getTime(){
+    let date = new Date()
+    let time = date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds()
+    return time
+}
 
 //function to calculate the most dominant emotion
 function calcDominantEmotion(arr) {
@@ -55,8 +62,6 @@ function calcDominantEmotion(arr) {
 
     //printing on the frontend
     emoText.innerHTML = `Your dominant emotion in last 5s was - <strong>${dominantEmo}</strong>`
-    graphOpen.classList.remove('d-none')
-
 
     //clearing the array for the next prediction
     arr.length = 0
@@ -70,7 +75,7 @@ function calcDominantEmotion(arr) {
             emotion: dominantEmo
         }
 
-        // showNotification(title, msgString, clickAction, options)
+        showNotification(title, msgString, clickAction, options)
     }
 }
 
@@ -86,12 +91,11 @@ function calcAvgAttention(arr){
 
     //printing on the frontend
     atnText.innerHTML = `Your average attention in last 5s was - <strong>${avgAtn}%</strong>`
+    atnGraphOpen.classList.remove('d-none')
 
-
-    let date = new Date()
-    let time = date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds()
+    //plotting for x, y
     let temp = {
-        x: time,
+        x: getTime(),
         y: avgAtn
     }
     timeArr.push(temp)
@@ -141,7 +145,7 @@ function plotAttentionGraph(attnArray) {
 }
 
 //plot chart upon opening of the popup 
-graphOpen.addEventListener('click', (e) => {
+atnGraphOpen.addEventListener('click', (e) => {
     if (timeArr.length != 0) {
         plotAttentionGraph(timeArr)
     }
@@ -151,7 +155,7 @@ graphOpen.addEventListener('click', (e) => {
 })
 
 //destroy the chart to prevent errors while plotting
-graphClose.addEventListener('click', (e) => {
+atnGraphClose.addEventListener('click', (e) => {
     if (newChart)
         newChart.destroy()
 })
