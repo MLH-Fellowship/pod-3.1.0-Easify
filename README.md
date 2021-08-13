@@ -71,8 +71,11 @@ All the classification and machine learning models are run in the users' browser
 ## Application images
 
 <div align="center">
+  <img width="240" alt="easify" src="https://github.com/MLH-Fellowship/pod-3.1.0-Easify/blob/staging/client/assets/imgs/head.png?raw=true">
   <img width="240" alt="easify" src="https://github.com/MLH-Fellowship/pod-3.1.0-Easify/blob/staging/client/assets/imgs/home-pg.png?raw=true">
+  <img width="240" alt="easify" src="https://github.com/MLH-Fellowship/pod-3.1.0-Easify/blob/staging/client/assets/imgs/emotion-noti.png?raw=true">
   <img width="240" alt="easify" src="https://github.com/MLH-Fellowship/pod-3.1.0-Easify/blob/staging/client/assets/imgs/atn-graph.png?raw=true">
+  <img width="240" alt="easify" src="https://github.com/MLH-Fellowship/pod-3.1.0-Easify/blob/staging/client/assets/imgs/atn-graph2.png?raw=true">
   <img width="240" alt="easify" src="https://github.com/MLH-Fellowship/pod-3.1.0-Easify/blob/staging/client/assets/imgs/website-blk.png?raw=true">
 </div>
 
