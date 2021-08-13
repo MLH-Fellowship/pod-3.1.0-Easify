@@ -32,26 +32,16 @@ var sequelize = new Sequelize({
   logging: false, 
 });
 
-const data = {
-    one: [1, 2, 3, 4],
-    two: [3, 4, 5, 6]
-}
-
-
-const sadsongs = ['RBumgq5yVrA','My2FRPA3Gf8','RBumgq5yVrA'];
-
 app.get('/', (req, res) => {
     res.json(data)
 })
 
 app.post('/songs/', (req,res) => {
-    // res.json(Math.round(Math.random(sadsongs.length)));
     console.log(req.body)
     if(req.body.emotion == "happy"){
       sequelize.query("SELECT * FROM happy", { type: sequelize.QueryTypes.SELECT})
       .catch ( (err) => { console.log(err);  })
       .then(function(songs) {
-          // console.log(songs);
           res.json(songs[Math.round(Math.random(songs.length))]);
       })
     }
@@ -63,16 +53,6 @@ app.post('/songs/', (req,res) => {
           res.json(songs[Math.round(Math.random(songs.length))]);
       })
     }
-//     Sad.sync({
-//         force:false,
-//    })
-//    .then(function() {
-//       return Sad.findAll();
-//    })
-       
-//    .then(function (sadlist) {
-//        console.log(sadlist)
-//    })
 })
 
 app.listen(port, () => {
