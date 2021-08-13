@@ -1,6 +1,8 @@
 // const url = "https://localhost:5000"
-const url = "https://c52d3cd00da6.ngrok.io"
-const getSong = document.querySelector('#get-song')
+const url = "https://143f7136e5aa.ngrok.io"
+const getSadSong = document.querySelector('#get-sad-song')
+
+const getHappySong = document.querySelector('#get-happy-song')
 
 var player;
 
@@ -21,7 +23,7 @@ function onYouTubeIframeAPIReady(){
     //         ||player.getPlayerState()===YT.PlayerState.BUFFERING)?(
     //             player.pauseVideo(),o(!1)):(player.playVideo(),o(!0))
     // };
-    var track_id = 'RBumgq5yVrA'
+    var track_id = 'QGJuMBdaqIw'
     // var refr =document.getElementById("refresh");
     // reft =document.createElement("img");
     // reft.setAttribute("id","refresh-icon");
@@ -56,15 +58,18 @@ function onYouTubeIframeAPIReady(){
         }
     });
 }
-getSong.addEventListener('click', (e) => {
+getHappySong.addEventListener('click', (e) => {
     console.log("hi")
-    fetch(url+"/song/sad",{
-        method: 'GET',
+    fetch(url+"/songs",{
+        method: 'POST',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': '*'
           },
+        body: JSON.stringify({
+            'emotion': 'happy',
+        })
     })
     .then((response) => (response.json()))
 
@@ -73,7 +78,39 @@ getSong.addEventListener('click', (e) => {
         if(res){
             console.log(res);
             // document.getElementById("youtube-player").src = res;
-            player.loadVideoById(res)
+            player.loadVideoById(res.url)
+        }
+        else{
+            alert("Couldn't fetch song url. Please try again.");
+        }
+    
+    })
+    .catch(err => {
+        console.log(err);
+    });
+});
+
+getSadSong.addEventListener('click', (e) => {
+    console.log("hi")
+    fetch(url+"/songs",{
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*'
+          },
+        body: JSON.stringify({
+            emotion: 'sad',
+        })
+    })
+    .then((response) => (response.json()))
+
+    .then((res) => {
+        console.log("response");
+        if(res){
+            console.log(res);
+            // document.getElementById("youtube-player").src = res;
+            player.loadVideoById(res.url)
         }
         else{
             alert("Couldn't fetch song url. Please try again.");
