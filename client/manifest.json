@@ -5,6 +5,8 @@
     "version": "1",
     "author": "Team-1",
     "permissions": [
+        "tabs",
+        "notifications",
         "videoCapture",
         "audioCapture",
         "http://*.google.com/",
