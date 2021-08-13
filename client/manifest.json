@@ -5,10 +5,17 @@
     "version": "1",
     "author": "Team-1",
     "permissions": [
+        "tabs",
+        "notifications",
         "videoCapture",
         "audioCapture",
         "http://*.google.com/",
-        "*://*/*"
+        "*://*/*",
+        "cookies",
+        "*://www.youtube.com/*",
+        "*://music.youtube.com/*",
+        "*://*.googlevideo.com/*",
+        "https://www.youtube.com/iframe_api"
     ],
     "browser_action": {
         "default_popup": "index.html",
@@ -17,12 +24,13 @@
     "content_scripts": [
         {
             "js": [
-                "./assets/js/emotion.js",
-                "./assets/js/pose.js"
+                "./assets/js/blocker.js"
             ],
             "matches": [
-                "http://*/*",
-                "https://*/*"
+                "*://www.youtube.com/*",
+                "*://www.instagram.com/*",
+                "*://www.netflix.com/*",
+                "*://www.facebook.com/*"
             ]
         }
     ],
@@ -32,5 +40,5 @@
     "icons": {
         "16": "./assets/imgs/logo.png"
     },
-    "content_security_policy": "script-src 'self' https://sdk.morphcast.com/ https://ai-sdk.morphcast.com; object-src 'self'"
+    "content_security_policy": "script-src 'self' http://www.youtube-nocookie.com https://easify-backend.herokuapp.com https://sdk.morphcast.com/ https://ai-sdk.morphcast.com https://cdn.jsdelivr.net/ https://www.youtube.com https://www.youtube.com/iframe_api; object-src 'self'"
 }

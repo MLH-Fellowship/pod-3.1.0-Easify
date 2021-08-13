@@ -15,7 +15,8 @@
     <!--Styles-->
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./assets/css/bs5.min.css">
+
+    <link rel="manifest" href="./manifest.json">
 
     <!--ML Scirpts-->
     <script src="./assets/js/ml-js/tf.min.js"></script>
@@ -23,35 +24,13 @@
     <script src="https://sdk.morphcast.com/mphtools/v1.0/mphtools.js"></script>
     <script src="https://ai-sdk.morphcast.com/v1.14/ai-sdk.js"></script>
 
-    <!--Bootstrap Scripts-->
-    <script defer src="./assets/js/jquery.js"></script>
-    <script defer src="./assets/js/bootstrap.js"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
+        
 
 </head>
 
 <body>
     <div class="header">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
-                aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-                <a class="navbar-brand" href="#">Hidden brand</a>
-                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#">Disabled</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-
         <!--Content before waves-->
         <div class="inner-header flex">
             <!--Just the logo.. Don't mind this-->
@@ -89,31 +68,100 @@ c-22.4,3-38.4,9.2-47.8,18.3c-11.2,10.9-13.6,26.7-16.3,45c-3.1,20.8-6.6,44.4-25.3
     </div>
     <!--Header ends-->
 
-    <!--Content starts-->
-    <div class="content">
-        <div> Your dominant emotion: <span id="emotion-text">Fetching...</span></div>
-        <div>Your average attention (in percentage) in last 5 seconds: <span id="attention-text">Waiting...</span></div>
-    </div>
+    <p class="h3 text-center my-5">Productivity easified!</p>
 
-    <div class="popup">
-        <h5 class="popup-head"> </h5>
-
-        <p id="joke"></p>
-        
-        <div id="btns">
-            <button id="yes">Yes</button>
-            <button id="no">No</button>
+    <div class="row card-container">
+        <div class="card text-center">
+            <img src="./assets/imgs/emotion.png" class="card-img-top" alt="Emotion Illustration">
+            <div class="card-body">
+                <h5 class="card-title">Your Emotion</h5>
+                <p class="card-text" id="emotion-text">
+                    Fetching your emotions...
+                </p>
+            </div>
         </div>
-    
+
+        <div class="card text-center">
+            <img src="./assets/imgs/attention.png" class="card-img-top" alt="Attention Illustration">
+            <div class="card-body">
+                <h5 class="card-title">Your Attention</h5>
+                <p class="card-text" id="attention-text">
+                    Calculating your attention...
+                </p>
+
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#graphModal" id="atn-graph-open">
+                    Explore More
+                </button>
+                
+                <!-- Modal -->
+                <div class="modal fade" id="graphModal" tabindex="-1" aria-labelledby="graphModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-xl modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="graphModalLabel">Attention Graph</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="atn-graph-close"></button>
+                            </div>
+                            <div class="modal-body" id="atn-graph-body">
+                                <canvas id="attentionChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card text-center">
+            <img src="./assets/imgs/pose.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Your Pose</h5>
+                <p class="card-text" id="label-container">
+                    Observing your pose...
+                </p>
+            </div>
+        </div>
     </div>
+
+    <div class="mx-auto">
+        <div class="d-flex justify-content-center">
+            <div data-video="VIDEO_ID" data-autoplay="0" data-loop="1" id="youtube-audio"></div>
+        </div>
+        <div class="mx-auto w-100 d-flex justify-content-center">
+            <button id="get-happy-song" class="btn btn-primary d-block mx-2 my-4">Play a happy song</button>
+            <button id="get-sad-song" class="btn btn-primary d-block mx-2 my-4">Play a sad song</button>
+        </div>
+    </div>
+
+    <div class="container-fluid pb-0 mb-0 justify-content-center text-light ">
+        <footer>
+            <div class="row my-5 justify-content-center py-5">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-xl-8 col-md-4 col-sm-4 col-12 my-auto mx-auto">
+                            <h3 class="mb-md-0 mb-5 bold-text text-center">Easify.</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    
     <!--Content ends-->
 
-    <div id='label-container'></div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.0/dist/chart.min.js"></script>
+    <!--Bootstrap Scripts-->
+    <script defer src="./assets/js/jquery.js"></script>
+    <script src="./assets/js/popper.js"></script>
+    <script defer src="./assets/js/bootstrap.js"></script>
 
-    <!--Local Scripts-->
+    <!-- Local Scripts-->
+    <script src="./assets/js/songs.js"></script>
     <script src="./assets/js/function.js"></script>
     <script src="./assets/js/pose.js"></script>
     <script src="./assets/js/emotion.js"></script>
+    
+    
 </body>
 
 </html>
